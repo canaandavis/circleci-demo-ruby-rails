@@ -63,7 +63,8 @@ jobs:
       - run:
           name: Installing Dependencies
           command: |
-            sudo apt-get install postgresql-client
+            sudo apt-get update
+            sudo apt-get install postgresql-client --fix-missing
 
       - run:
           name: Restore Database
