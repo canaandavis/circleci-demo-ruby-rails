@@ -61,6 +61,10 @@ jobs:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       - run:
+          name: Working Directory
+          command: pwd
+
+      - run:
           name: Installing Dependencies
           command: |
             sudo apt-get update
@@ -68,7 +72,7 @@ jobs:
 
       - run:
           name: Restore Database
-          command: psql -U circleci-demo-ruby -d rails_blog -f ~/circleci-demo-ruby-rails/db/circleci.sql
+          command: psql -U circleci-demo-ruby -d rails_blog -f ./db/circleci.sql
 
       - run:
           name: Database setup
