@@ -61,6 +61,11 @@ jobs:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       - run:
+          name: Installing Dependencies
+          command: |
+            sudo apt-get install postgresql-client
+
+      - run:
           name: Restore Database
           command: psql -U circleci-demo-ruby -d rails_blog -f ~/circleci-demo-ruby-rails/db/circleci.sql
 
